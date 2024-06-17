@@ -1,0 +1,5 @@
+node init -y
+npm install express --save
+npm install cors
+npm install multer
+npm install mongodb@4.1.0

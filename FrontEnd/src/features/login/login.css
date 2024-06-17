@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+
+:root {
+  --pink: rgb(214 51 132);
+  --white: rgb(255 255 255);
+  --google: rgb(233 66 53);
+}
+
+.loginFailAlert {
+  width: 97%;
+}
+
+.loginTitle {
+  font-family: "Dancing Script";
+  color: var(--pink);
+  margin: 2rem 6rem; /* Margin ở chế độ bình thường */
+}
+.googleLoginBtn {
+  background-color: var(--google) !important;
+  color: var(--white) !important;
+  width: 100%;
+  margin-bottom: 7%;
+}
+
+.googleLoginBtn:hover {
+  background-color: var(--white) !important;
+  color: var(--google) !important;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.loginBtn {
+  background-color: var(--pink) !important;
+  color: var(--white) !important;
+}
+
+.loginBtn:hover {
+  background-color: var(--white) !important;
+  color: var(--pink) !important;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+body {
+  background-color: rgb(208, 206, 206) !important;
+}
+
+.container {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 1000px !important;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .loginPanel {
+    height: 100%;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .container {
+    box-shadow: none;
+  }
+
+  .row > * {
+    width: 100% !important;
+    padding: 0 15px; /* Khoảng cách giữa cột và mép của màn hình */
+  }
+
+  .loginContent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+  }
+
+  .loginTitle {
+    font-weight: bold;
+    text-align: center; /* Canh giữa nội dung */
+    margin-top: -2% !important; /* Đặt margin-top về 0 */
+    margin-bottom: 3% !important; /* Đặt margin-bottom về 0 */
+    color: var(--pink) !important;
+  }
+
+  .inputGroup{
+    width: 35%;
+  }
+
+  .googleLoginBtn{
+    width: 35% !important;
+    margin: 0;
+  }
+
+  .failLoginAlert{
+    margin-top: -8.7%;
+  }
+}
