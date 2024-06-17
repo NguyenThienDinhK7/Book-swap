@@ -8,18 +8,19 @@ const formattedDateTime: string = new Date()
   .replace(/[-T:\.Z]/g, "");
 
 const Home = () => {
-  const [views, setViews] = useState<number | null>(null);
-  const publicUrl = import.meta.env.VITE_PUBLIC_URL;
+  const [sessionData, setSessionData] = useState<{ Role: string, AccountID: string, Name: string } | null>(null);
 
   useEffect(() => {
     axios.get('http://localhost:5038/api/session', { withCredentials: true })
         .then(response => {
-            setViews(response.data.views);
+            if (response.data.sessionData) {
+                setSessionData(response.data.sessionData);
+            }
         })
         .catch(error => {
             console.error('There was an error!', error);
         });
-}, []);
+  }, []);
 
   return (
     <>
@@ -35,7 +36,16 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <h1>Session Views: {views}|</h1>
+        <h1>Session Data:</h1>
+        {sessionData ? (
+          <div>
+            <p>Role: {sessionData.Role}</p>
+            <p>AccountID: {sessionData.AccountID}</p>
+            <p>Name: {sessionData.Name}</p>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </>
   );

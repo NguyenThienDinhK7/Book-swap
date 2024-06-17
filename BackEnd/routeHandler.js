@@ -31,10 +31,9 @@ class RouteHandler {
   }
 
   setupMiddleware() {
-    // Cấu hình CORS
     const corsOptions = {
-      origin: 'http://localhost:5173', // URL của React app
-      credentials: true // Để cho phép credentials (cookie, header)
+      origin: 'http://localhost:5173', // URL of React app
+      credentials: true // To allow credentials (cookies, headers)
     };
     this.app.use(cors(corsOptions));
 
@@ -46,14 +45,12 @@ class RouteHandler {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        secure: false, // chỉnh lại khi đi vào https
+        secure: false, // Ensure secure is false for HTTP; set true for HTTPS
         httpOnly: true,
-        maxAge: 60000 // 1 phút để kiểm tra
+        maxAge: 60000 * 60 // 1 minute for testing
       }
     }));
-    
 
-    // Middleware để thiết lập session.visited và sessionStore.get(session.id)
     this.app.use((req, res, next) => {
       req.session.visited = true;
       if (req.sessionStore && req.session.id) {
@@ -63,10 +60,10 @@ class RouteHandler {
           } else {
             console.log("Session data:", session);
           }
-          next(); // Chuyển sang middleware/route handler tiếp theo
+          next(); // Proceed to the next middleware/route handler
         });
       } else {
-        next(); // Chuyển sang middleware/route handler tiếp theo
+        next(); // Proceed to the next middleware/route handler
       }
     });
   }
@@ -84,7 +81,12 @@ class RouteHandler {
     });
 
     this.app.get('/api/session', (req, res) => {
-      res.json({ session: req.session });
+      // Check if session data exists and return it
+      if (req.session.userData) {
+        res.json({ sessionData: req.session.userData });
+      } else {
+        res.status(404).json({ message: "No session data found" });
+      }
     });
 
     this.app.get("/api/books/:id", async (req, res) => {
@@ -121,18 +123,41 @@ class RouteHandler {
     // Login
     this.app.post("/api/login", async (req, res) => {
       const { email, pass } = req.body;
+      console.log("Session ID before login:", req.session.id);
       try {
         const auth = await this.auth.loginHandle(email, pass);
-        console.log(req.session.id);
-        //res.json({ message: auth === "1" ? "client" : "admin" });
+        console.log("Session ID after login:", req.session.id);
+
+        // Store data in the session
+        req.session.userData = auth;
+
+        // Save session data
+        req.session.save((err) => {
+          if (err) {
+            console.error("Error saving session:", err);
+            res.status(500).json({ error: "Internal Server Error" });
+            return;
+          }
+
+          // Retrieve session data
+          req.sessionStore.get(req.session.id, (err, session) => {
+            if (err) {
+              console.error("Error retrieving session:", err);
+            } else {
+              console.log("Retrieved session data:", session);
+            }
+          });
+
+          res.json({ message: auth.Role === "1" ? "client" : "admin" });
+        });
       } catch (error) {
-        console.error("Error signing up user:", error);
+        console.error("Error logging in user:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
     });
 
     // ======================================================================================
   }
-}
+} 
 
 module.exports = RouteHandler;

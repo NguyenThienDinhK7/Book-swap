@@ -43,6 +43,7 @@ const Login: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include credentials (cookies)
         body: JSON.stringify({ email: emailValue, pass: passValue }),
       });
 
@@ -176,3 +177,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+  
