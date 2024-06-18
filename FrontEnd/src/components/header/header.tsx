@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import LogOut from "../logOut/logOut";
-import Alert from "../alert/notify";
+import Notify from "../alert/notify";
 import Message from "../message/message";
 import BookExchange from "../BookExchange/bookExchange";
 
@@ -53,7 +53,7 @@ const Header = ({ avatar, logOutVisible }: Props) => {
             </div>
             <BookExchange />
             <Message />
-            <Alert />
+            <Notify />
             <LogOut logOutVisible = {logOutVisible} />
           </>
         ) : (

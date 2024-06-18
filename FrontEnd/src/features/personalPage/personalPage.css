@@ -1,31 +1,86 @@
-.cover_photo {
-  max-height: 50%; /* Sử dụng 100% để giữ kích thước tổng thể của ảnh không vượt quá kích thước ban đầu */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.container {
+  background-color: rgb(255, 255, 255);
+  width: 90% !important;
 }
 
-.cover_photo img {
+.profile-header {
   width: 100%;
-  height: auto;
+  max-width: 100%;
+  padding-bottom: 40%; /* Tỷ lệ 3:2 (nếu ảnh bìa có tỷ lệ này) */
+  overflow: hidden;
+  position: relative;
 }
 
-.avatar {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20%; /* Sử dụng đơn vị phần trăm để kích thước của avatar phụ thuộc vào container của nó */
-    max-width: 160px; /* Đặt giới hạn kích thước tối đa cho avatar */
-    height: auto; /* Đảm bảo tỷ lệ khung hình tự động */
-    overflow: hidden;
+.cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cover-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-container {
+  position: absolute;
+  bottom: 10px; /* Điều chỉnh khoảng cách từ dưới lên */
+  left: 20px; /* Điều chỉnh khoảng cách từ trái sang */
+  width: 20%; /* Chiều rộng của ảnh đại diện */
+  max-width: 150px; /* Chiều rộng tối đa của ảnh đại diện */
+  height: auto; /* Chiều cao tự động điều chỉnh */
+  overflow: hidden;
+}
+
+.avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0; /* Bỏ viền tròn */
+}
+
+.profile-name {
+  position: absolute;
+  bottom: 10px; /* Điều chỉnh khoảng cách từ dưới lên */
+  margin-left: 13%;
+  left: 20px; /* Điều chỉnh khoảng cách từ trái sang */
+  text-align: center; /* Căn chỉnh văn bản vào giữa */
+  overflow: hidden; /* Ẩn các kí tự dư thừa */
+  white-space: nowrap; /* Ngăn không cho văn bản bị ngắt dòng */
+  text-overflow: ellipsis; /* Hiển thị dấu chấm ba cho văn bản quá dài */
+}
+
+.profile-name h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Độ mờ và màu sắc của viền chữ */
+  color: white; /* Màu chữ */
+}
+
+.profile-info .profile-name.uppercase {
+  text-transform: uppercase; /* Chuyển đổi tất cả chữ cái thành in hoa */
+}
+
+.profile-info .profile-name.lowercase {
+  text-transform: lowercase; /* Chuyển đổi tất cả chữ cái thành in thường */
+}
+
+.profile-info .profile-name.capitalize {
+  text-transform: capitalize; /* Chuyển đổi chữ cái đầu tiên của mỗi từ thành in hoa */
+}
+
+@media (max-width: 600px) {
+  .profile-info {
+    width: calc(20% + 30px); /* 20% + 30px khi màn hình nhỏ hơn hoặc bằng 600px */
   }
-  
-  .avatar img {
-    display: block;
-    width: 100%; /* Đảm bảo ảnh lấp đầy không gian của avatar */
-    height: auto;
-    border-radius: 50%; /* Để làm cho ảnh tròn */
+}
+
+@media (min-width: 601px) {
+  .profile-info {
+    width: calc(16% + 30px); /* 16% + 30px khi màn hình lớn hơn 600px */
   }
-  
+}

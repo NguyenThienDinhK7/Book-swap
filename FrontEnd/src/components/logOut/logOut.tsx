@@ -11,7 +11,7 @@ function handelLogout() {
 
 const LogOut = ({logOutVisible = "d-flex"}:Props) => {
   return (
-    <div className={`logOut ${logOutVisible} justify-content-center align-items-center rounded-circle me-2`} title="Đăng xuất">
+    <div className={`logOut ${logOutVisible} justify-content-center align-items-center rounded-circle me-4`} title="Đăng xuất">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="27"

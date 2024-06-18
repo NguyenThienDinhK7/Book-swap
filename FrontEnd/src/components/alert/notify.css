@@ -2,14 +2,14 @@
     transform: translate(121%, 92%);
 }
 
-.Alert {
+.Notify {
     width: 47px;
     height: 47px;
     background-color: rgb(206, 206, 206) !important;
     color: rgb(0,0,0);
   }
 
-  .Alert:hover{
+  .Notify:hover{
     background-color: rgb(167, 166, 166) !important;
     cursor: pointer;
   }

@@ -8,7 +8,7 @@ const Message = () => {
         className={`Message d-flex justify-content-center align-items-center rounded-circle me-2 position-relative`}
         title="Tin nhắn"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#modalMessage"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const Message = () => {
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id="modalMessage"
         tabIndex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -61,7 +61,7 @@ const Message = () => {
                 </div>
                 <div className="toast-body">
                   Hello, world! This is a static toast-like div. ksdn knnd land
-                  oin andka woia doa đănoihdo oawhd oa dboab doahd oah dowa
+                  oin andka woia doa đănoihdo oawhd ssssssss22222222222ssssssssoa dboab doahd oah dowa
                   doahd oahdoadh oadn oahd oiahdiavfi32bfi2h h3 oho32 grogroq ro
                 </div>
               </div>

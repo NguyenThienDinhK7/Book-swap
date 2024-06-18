@@ -1,13 +1,14 @@
 import React from "react";
+import "./bookExchange.css"
 
 const BookExchange = () => {
   return (
     <>
       <div
-        className={`Alert d-flex justify-content-center align-items-center rounded-circle me-2 position-relative`}
+        className={`BookExchange d-flex justify-content-center align-items-center rounded-circle me-2 position-relative`}
         title="Trao đổi"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#modalBookExchange"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +31,7 @@ const BookExchange = () => {
 
       <div
         className="modal fade"
-        id="exampleModal"
+        id="modalBookExchange"
         tabIndex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -64,7 +65,7 @@ const BookExchange = () => {
                 <div className="toast-body">
                   Hello, world! This is a static toast-like div. ksdn knnd land
                   oin andka woia doa đănoihdo oawhd oa dboab doahd oah dowa
-                  doahd oahdoadh oadn oahd oiahdiavfi32bfi2h h3 oho32 grogroq ro
+                  doahd oahdoadh oadn oahd ----------- h3 oho32 grogroq ro
                 </div>
               </div>
             </div>

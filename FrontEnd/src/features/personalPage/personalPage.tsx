@@ -8,19 +8,24 @@ const PersonalPage = () => {
     <>
       <Header avatar="d-none" />
 
-      <div className="d-flex justify-content-center">
-        <div className="cover_photo_wrapper w-75 bg-dark position-relative">
-          <div className="cover_photo bg-danger">
+      <div className="d-flex justify-content-center container mt-3 p-3 rounded">
+        <div className="profile-header position-relative">
+          <div className="cover-photo">
             <img
-              src="/public/images/users/avt666fdb519bcdc003a1b7e81c.jpg"
-              alt=""
+              src="/images/users/cov666fdb519bcdc003a1b7e81c.jpg"
+              alt="Cover"
+              className="img-fluid w-100 h-100"
             />
           </div>
-          <div className="avatar position-absolute top-50 start-50 translate-middle">
+          <div className="avatar-container">
             <img
-              src="/public/images/users/avt666fdb519bcdc003a1b7e81c.jpg"
-              alt=""
+              src="/images/users/avt666fdb519bcdc003a1b7e81c.jpg"
+              alt="Avatar"
+              className="rounded-circle"
             />
+          </div>
+          <div className="profile-name">
+            <h2 className="text-white mt-3">John Doe</h2>
           </div>
         </div>
       </div>
