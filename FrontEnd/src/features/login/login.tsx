@@ -58,7 +58,12 @@ const Login: React.FC = () => {
       } else if (data.message === "error") {
         setMessage("*Lỗi đăng nhập");
       } else {
-        setWarningPass(data.message);
+        if(data.message === 1){
+          setWarningEmail("Email không tồn tại !");
+        }else{
+          setWarningPass("Sai mật khẩu !");
+        }
+        
       }
     } catch (error) {
       console.error("Failed to login:", error);

@@ -32,24 +32,26 @@ class RouteHandler {
 
   setupMiddleware() {
     const corsOptions = {
-      origin: 'http://localhost:5173', // URL of React app
-      credentials: true // To allow credentials (cookies, headers)
+      origin: "http://localhost:5173", // URL of React app
+      credentials: true, // To allow credentials (cookies, headers)
     };
     this.app.use(cors(corsOptions));
 
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser("hello"));
-    this.app.use(session({
-      secret: 'n98h8H*V*G(8vV*&Fv*7F^&c7TCX6C&tvUb*&G7ytvY*f&tc^7cVUvy7TcTvc',
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: false, // Ensure secure is false for HTTP; set true for HTTPS
-        httpOnly: true,
-        maxAge: 60000 * 60 // 1 minute for testing
-      }
-    }));
+    this.app.use(
+      session({
+        secret: "n98h8H*V*G(8vV*&Fv*7F^&c7TCX6C&tvUb*&G7ytvY*f&tc^7cVUvy7TcTvc",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+          secure: false, // Ensure secure is false for HTTP; set true for HTTPS
+          httpOnly: true,
+          maxAge: 60000 * 60,
+        },
+      })
+    );
 
     this.app.use((req, res, next) => {
       req.session.visited = true;
@@ -80,7 +82,7 @@ class RouteHandler {
       }
     });
 
-    this.app.get('/api/session', (req, res) => {
+    this.app.get("/api/session", (req, res) => {
       // Check if session data exists and return it
       if (req.session.userData) {
         res.json({ sessionData: req.session.userData });
@@ -148,7 +150,14 @@ class RouteHandler {
             }
           });
 
-          res.json({ message: auth.Role === "1" ? "client" : "admin" });
+          res.json({
+            message:
+              auth.Role === "1"
+                ? "client"
+                : auth.Role === "2"
+                ? "admin"
+                : auth,
+          });
         });
       } catch (error) {
         console.error("Error logging in user:", error);
@@ -158,6 +167,6 @@ class RouteHandler {
 
     // ======================================================================================
   }
-} 
+}
 
 module.exports = RouteHandler;

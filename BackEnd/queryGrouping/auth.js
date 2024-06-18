@@ -63,7 +63,7 @@ class Auth {
       const account = await this.checkAccountExistence(email);
 
       if (account.length === 0) {
-        return "Tài khoản không tồn tại!";
+        return 1; // Tài khoản không tồn tại!
       } else {
         const hashedPass = account[0].Password;
 
@@ -71,7 +71,7 @@ class Auth {
         if (isMatch) {
           return {Role: account[0].Role, AccountID: account[0].AccountID, Name: account[0].Name};
         } else {
-          return "Sai mật khẩu!";
+          return 2; // Sai mật khẩu!
         }
       }
     } catch (error) {

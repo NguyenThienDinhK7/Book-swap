@@ -1,0 +1,12 @@
+.Message {
+    width: 47px;
+    height: 47px;
+    background-color: rgb(206, 206, 206);
+    color: rgb(0, 0, 0);
+  }
+  
+  .Message:hover {
+    background-color: rgb(167, 166, 166) !important;
+    cursor: pointer;    
+  }
+      

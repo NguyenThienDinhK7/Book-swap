@@ -1,0 +1,31 @@
+.cover_photo {
+  max-height: 50%; /* Sử dụng 100% để giữ kích thước tổng thể của ảnh không vượt quá kích thước ban đầu */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover_photo img {
+  width: 100%;
+  height: auto;
+}
+
+.avatar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%; /* Sử dụng đơn vị phần trăm để kích thước của avatar phụ thuộc vào container của nó */
+    max-width: 160px; /* Đặt giới hạn kích thước tối đa cho avatar */
+    height: auto; /* Đảm bảo tỷ lệ khung hình tự động */
+    overflow: hidden;
+  }
+  
+  .avatar img {
+    display: block;
+    width: 100%; /* Đảm bảo ảnh lấp đầy không gian của avatar */
+    height: auto;
+    border-radius: 50%; /* Để làm cho ảnh tròn */
+  }
+  
